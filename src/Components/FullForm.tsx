@@ -1,6 +1,5 @@
 "use client";
-import { useContext } from "react";
-import { stepContext } from "@/React Context/stepContext";
+import { useStepContext } from "@/React Context/stepContext";
 import Info from "./Step1";
 import Plans from "./Step2";
 import AddOns from "./Step3";
@@ -22,10 +21,10 @@ const FullForm = () => {
       total: 0,
     },
   });
-  const { step } = useContext(stepContext);
+  const { step } = useStepContext();
 
   return (
-    <main className="bg-white min-h-[580px] max-w-xs sm:max-w-md md:max-w-full mx-auto md:mx-0  z-10 relative -top-8 md:top-0 rounded-md md:rounded-none ">
+    <main className="bg-white min-h-[480px] max-w-sm sm:max-w-md md:max-w-full mx-auto md:mx-0  z-10 relative -top-8 md:top-0 rounded-md md:rounded-none ">
       {step === 1 && <Info form={form} />}
       {step === 2 && <Plans form={form} />}
       {step === 3 && <AddOns form={form} />}

@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, Dispatch, SetStateAction, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useState,
+} from "react";
 
 type StepContextType = {
   step: number;
@@ -10,7 +16,7 @@ type StepContextType = {
 };
 
 // Creating Context;
-export const stepContext = createContext<StepContextType>({
+const stepContext = createContext<StepContextType>({
   step: 1,
   setStep: () => {},
   isComplete: { 0: true, 1: false, 2: false, 3: false, 4: false },
@@ -23,7 +29,7 @@ const StepContextProvider = ({ children }: { children: React.ReactNode }) => {
   // State to identify which stage is completed
   const [isComplete, setIsComplete] = useState<Record<number, boolean>>({
     0: true,
-    1: true,
+    1: false,
     2: false,
     3: false,
     4: false,
@@ -36,3 +42,11 @@ const StepContextProvider = ({ children }: { children: React.ReactNode }) => {
 };
 
 export default StepContextProvider;
+
+export const useStepContext = () => {
+  const context = useContext(stepContext);
+  if (!context) {
+    throw new Error("useFormContext must be used within FormContextProvider");
+  }
+  return context;
+};

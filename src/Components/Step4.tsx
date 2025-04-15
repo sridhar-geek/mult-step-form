@@ -1,9 +1,8 @@
 import { useMultiFormContext } from "@/React Context/formContext";
-import { stepContext } from "@/React Context/stepContext";
-import React, { useContext, useEffect } from "react";
+import { useStepContext } from "@/React Context/stepContext";
+import { useEffect } from "react";
 import { Button } from "./ui/button";
 import { checkboxData, plans } from "@/lib/data";
-
 
 const Summary = () => {
   const {
@@ -16,7 +15,7 @@ const Summary = () => {
     updateAddOns,
     updatePlan,
   } = useMultiFormContext();
-  const { setStep, step } = useContext(stepContext);
+  const { setStep, step } = useStepContext();
 
   useEffect(() => {
     // Create a lookup map for add-ons
@@ -51,8 +50,8 @@ const Summary = () => {
     };
 
     updatePlan(updatedPlan);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [billingCycle]); 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [billingCycle]);
 
   const calculatePrice = () => {
     const totalPrice = addOns.reduce(
@@ -117,7 +116,11 @@ const Summary = () => {
         <Button className="cursor-pointer" onClick={handleback}>
           Go Back
         </Button>
-        <Button type="submit" className="cursor-pointer" onClick={() => setStep(step +1)}>
+        <Button
+          type="submit"
+          className="cursor-pointer"
+          onClick={() => setStep(step + 1)}
+        >
           Next Step
         </Button>
       </div>

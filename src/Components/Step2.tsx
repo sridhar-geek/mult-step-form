@@ -1,23 +1,20 @@
 "use client";
 
 import { useMultiFormContext } from "@/React Context/formContext";
-import { stepContext } from "@/React Context/stepContext";
-import React, { useContext } from "react";
+import {  useStepContext } from "@/React Context/stepContext";
 import { Button } from "./ui/button";
 import FormFeild from "./FormFeild";
 import { Form } from "./ui/form";
-import {  UseFormReturn } from "react-hook-form";
+import { UseFormReturn } from "react-hook-form";
 import { Switch } from "./ui/switch";
 import { Label } from "./ui/label";
 import { plans } from "@/lib/data";
 import { FullFormSchemaType } from "@/lib/formSchema";
 
 const Plans = ({ form }: { form: UseFormReturn<FullFormSchemaType> }) => {
-  const { step, setStep, setIsComplete } = useContext(stepContext);
+  const { step, setStep, setIsComplete } = useStepContext()
   const { updateBillingCycle, updatePlan, billingCycle } =
     useMultiFormContext();
-
-
 
   function onSubmit(values: FullFormSchemaType) {
     const selectedPlan = plans.find((plan) => plan.value === values.plan);

@@ -6,6 +6,7 @@
 @theme inline {
   --color-fullBackground: var(--fullBackground);
   --color-background: var(--background);
+  --color-circleFill: var(--circleFill);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -46,14 +47,14 @@
 
 :root {
   --radius: 0.625rem;
-  --fullBackground: hsl(206, 94%, 87%);
-  --background: oklch(1 0 0);
+  --background: hsl(206, 94%, 87%);
+  --circleFill: hsl(206, 94%, 87%);
   --foreground: oklch(0.13 0.028 261.692);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.13 0.028 261.692);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.13 0.028 261.692);
-  --primary: oklch(0.21 0.034 264.665);
+  --primary: hsl(213, 96%, 18%);
   --primary-foreground: oklch(0.985 0.002 247.839);
   --secondary: oklch(0.967 0.003 264.542);
   --secondary-foreground: oklch(0.21 0.034 264.665);

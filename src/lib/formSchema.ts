@@ -8,7 +8,7 @@ export const formSchema = z.object({
     required_error: "Please select a plan.",
   }),
   addons: z.array(z.string()).min(0).optional(),
-  total: z.number()
+  total: z.number(),
 });
 
-export type FullFormSchemaType = z.infer<typeof formSchema>
+export type FullFormSchemaType = z.infer<typeof formSchema>;

@@ -1,4 +1,3 @@
-
 export type PlanType = {
   name: string;
   price: number;
@@ -22,7 +21,6 @@ export type FormContextType = {
   updateAddOns: (addOn: AddOnsType[]) => void;
 };
 
-
 export type Plans = {
   label: string;
   value: string;
@@ -32,9 +30,9 @@ export type Plans = {
 };
 
 export type CheckBox = {
-    id: number,
-    name: string,
-    description: string, 
-    monthlyPrice: number, 
-    yearlyPrice: number
-}
+  id: number;
+  name: string;
+  description: string;
+  monthlyPrice: number;
+  yearlyPrice: number;
+};

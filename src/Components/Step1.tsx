@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
-import {  UseFormReturn } from "react-hook-form";
+import { UseFormReturn } from "react-hook-form";
 import { Form } from "@/Components/ui/form";
 import FormFeild from "./FormFeild";
 import { Button } from "./ui/button";
-import { stepContext } from "@/React Context/stepContext";
+import { useStepContext } from "@/React Context/stepContext";
 import { useMultiFormContext } from "@/React Context/formContext";
 import { FullFormSchemaType } from "@/lib/formSchema";
-
 
 const inputFormFeilds = [
   {
@@ -31,9 +29,7 @@ const inputFormFeilds = [
 
 const Info = ({ form }: { form: UseFormReturn<FullFormSchemaType> }) => {
   const { updatePersonalInfo } = useMultiFormContext();
-  const { setIsComplete, step, setStep } = useContext(stepContext);
-
-
+  const { setIsComplete, step, setStep } = useStepContext();
 
   // 2. Define a submit handler.
   function onSubmit(values: FullFormSchemaType) {

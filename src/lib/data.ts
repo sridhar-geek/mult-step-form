@@ -47,4 +47,3 @@ export const plans: Plans[] = [
     yearlyPrice: 150,
   },
 ];
-

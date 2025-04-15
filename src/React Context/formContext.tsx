@@ -37,7 +37,7 @@ const FormContextProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const updateAddOns = (selectedAddOn: AddOnsType[]) => {
-    setAddOns(selectedAddOn)
+    setAddOns(selectedAddOn);
   };
 
   return (

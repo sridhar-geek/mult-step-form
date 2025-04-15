@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-fullBackground min-h-screen flex md:items-center md:justify-center`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background min-h-screen flex md:items-center md:justify-center`}
       >
         <StepContextProvider>
           <main className="w-full md:max-w-4xl md:bg-white md:shadow-xl md:p-4 md:rounded-xl md:min-h-[600px] flex md:flex-row flex-col md:gap-10">

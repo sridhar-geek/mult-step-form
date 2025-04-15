@@ -1,6 +1,5 @@
 import { useMultiFormContext } from "@/React Context/formContext";
-import { stepContext } from "@/React Context/stepContext";
-import React, { useContext } from "react";
+import {  useStepContext } from "@/React Context/stepContext";
 import { Button } from "./ui/button";
 import { Form } from "./ui/form";
 import { UseFormReturn } from "react-hook-form";
@@ -10,7 +9,7 @@ import { AddOnsType } from "@/lib/types";
 import { FullFormSchemaType } from "@/lib/formSchema";
 
 const AddOns = ({ form }: { form: UseFormReturn<FullFormSchemaType> }) => {
-  const { step, setStep, setIsComplete } = useContext(stepContext);
+  const { step, setStep, setIsComplete } = useStepContext()
   const { billingCycle, updateAddOns } = useMultiFormContext();
 
   const onSubmit = (values: FullFormSchemaType) => {
