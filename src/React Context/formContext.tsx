@@ -1,40 +1,19 @@
 "use client";
 
+import { AddOnsType, FormContextType, PlanType } from "@/lib/types";
 import { createContext, useState, useContext } from "react";
 
-type PlanType = {
-  name: string;
-  price: number;
-};
-
-type AddOnsType = {
-  name: string;
-  des: string;
-  price: number;
-};
-
-type FormContextType = {
-  name: string;
-  email: string;
-  phoneNo: string;
-  type: "monthly" | "yearly";
-  plan: PlanType | null;
-  addOns: AddOnsType[];
-  updatePersonalInfo: (field: { name: string; value: string }) => void;
-  updatePlanType: (type: "monthly" | "yearly") => void;
-  updatePlan: (plan: PlanType) => void;
-  updateAddOns: (addOn: AddOnsType) => void;
-};
-
-// export the formContext 
+// export the formContext
 export const formContext = createContext<FormContextType | null>(null);
 
 const FormContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
-  const [type, setType] = useState<"monthly" | "yearly">("monthly");
-  const [plan, setPlan] = useState<PlanType | null>(null);
+  const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(
+    "monthly"
+  );
+  const [plan, setPlan] = useState<PlanType>({ name: "arcade", price: 9 });
   const [addOns, setAddOns] = useState<AddOnsType[]>([]);
 
   const updatePersonalInfo = ({
@@ -49,21 +28,16 @@ const FormContextProvider = ({ children }: { children: React.ReactNode }) => {
     if (name === "phoneNo") setPhoneNo(value);
   };
 
-  const updatePlanType = (selectedType: "monthly" | "yearly") => {
-    setType(selectedType);
+  const updateBillingCycle = (selectedType: "monthly" | "yearly") => {
+    setBillingCycle(selectedType);
   };
 
   const updatePlan = (selectedPlan: PlanType) => {
     setPlan(selectedPlan);
   };
 
-  const updateAddOns = (selectedAddOn: AddOnsType) => {
-    const exists = addOns.find((item) => item.name === selectedAddOn.name);
-    if (exists) {
-      setAddOns(addOns.filter((item) => item.name !== selectedAddOn.name));
-    } else {
-      setAddOns([...addOns, selectedAddOn]);
-    }
+  const updateAddOns = (selectedAddOn: AddOnsType[]) => {
+    setAddOns(selectedAddOn)
   };
 
   return (
@@ -72,11 +46,11 @@ const FormContextProvider = ({ children }: { children: React.ReactNode }) => {
         name,
         email,
         phoneNo,
-        type,
+        billingCycle,
         plan,
         addOns,
         updatePersonalInfo,
-        updatePlanType,
+        updateBillingCycle,
         updatePlan,
         updateAddOns,
       }}

@@ -23,7 +23,7 @@ const StepContextProvider = ({ children }: { children: React.ReactNode }) => {
   // State to identify which stage is completed
   const [isComplete, setIsComplete] = useState<Record<number, boolean>>({
     0: true,
-    1: false,
+    1: true,
     2: false,
     3: false,
     4: false,
