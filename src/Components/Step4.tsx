@@ -67,24 +67,24 @@ const Summary = () => {
   return (
     <aside className="p-5 pl-9 flex flex-col min-h-[70vh] justify-between">
       <div>
-        <h1 className="text-2xl text-blue-400 font-bold">Finishing Up</h1>
-        <p className="text-gray-500 pb-10">
+        <h1 className="heading">Finishing Up</h1>
+        <p className="sub-heading">
           Double-check everything looks OK before conforming
         </p>
-        <section className="bg-fullBackground p-6 m-3 rounded-md">
+        <section className="bg-background p-6 m-3 rounded-md">
           <div className="flex justify-between items-center mb-5">
             <div className="flex flex-col gap-1">
-              <h1>
+              <h1 className="capitalize text-primary font-bold text-xl">
                 {plan.name} ({billingCycle})
               </h1>
               <p
                 onClick={() => setStep(2)}
-                className="underline underline-offset-1 decoration-blue-700 cursor-pointer"
+                className="underline underline-offset-2 decoration-blue-400 text-active cursor-pointer"
               >
                 change
               </p>
             </div>
-            <h2>
+            <h2 className="text-primary font-bold text-xl">
               ${plan.price}/{billingCycle === "monthly" ? "mo" : "yr"}{" "}
             </h2>
           </div>
@@ -104,16 +104,20 @@ const Summary = () => {
           </div>
         </section>
         <div className=" px-4 m-3 flex justify-between items-center">
-          <h1>Total ({billingCycle})</h1>
-          <h2>
+          <h1 className="text-gray-400 text-xl">Total ({billingCycle})</h1>
+          <h2 className="text-gray-400 text-xl">
             + ${calculatePrice()}/{billingCycle === "monthly" ? "mo" : "yr"}{" "}
           </h2>
         </div>
       </div>
 
       {/* Desktop Button */}
-      <div className="hidden md:flex justify-between items-center">
-        <Button className="cursor-pointer" onClick={handleback}>
+      <div className="desktop-buttons">
+        <Button
+          className="back-button text-gray-400 bg-white"
+          variant={"secondary"}
+          onClick={handleback}
+        >
           Go Back
         </Button>
         <Button
@@ -126,11 +130,15 @@ const Summary = () => {
       </div>
 
       {/* Mobile Fixed Button */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white p-4 shadow-md flex justify-between items-center">
-        <Button className="" onClick={handleback}>
+      <div className="mobile-buttons">
+        <Button
+          className="back-button text-gray-400 bg-white"
+          variant={"secondary"}
+          onClick={handleback}
+        >
           Go Back
         </Button>{" "}
-        <Button type="submit" className="">
+        <Button type="submit" className="cursor-pointer">
           Next Step
         </Button>
       </div>

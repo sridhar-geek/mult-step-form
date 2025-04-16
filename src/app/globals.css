@@ -7,6 +7,7 @@
   --color-fullBackground: var(--fullBackground);
   --color-background: var(--background);
   --color-circleFill: var(--circleFill);
+  --color-active: var(--active);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -49,6 +50,7 @@
   --radius: 0.625rem;
   --background: hsl(206, 94%, 87%);
   --circleFill: hsl(206, 94%, 87%);
+  --active: hsl(243, 100%, 62%);
   --foreground: oklch(0.13 0.028 261.692);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.13 0.028 261.692);
@@ -122,4 +124,29 @@
   body {
     @apply bg-background text-foreground;
   }
+  .heading {
+    @apply text-2xl md:text-3xl text-primary font-bold;
+  }
+  .sub-heading {
+    @apply text-gray-500 text-sm md:text-xl pb-10;
+  }
+  .desktop-buttons {
+    @apply hidden md:flex justify-between items-center pt-6;
+  }
+  .mobile-buttons {
+    @apply md:hidden fixed bottom-0 left-0 right-0 bg-white p-4 shadow-md flex justify-between items-center;
+  }
+  .back-button{
+    @apply cursor-pointer bg-white text-gray-500;
+  }
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }

@@ -45,8 +45,8 @@ const AddOns = ({ form }: { form: UseFormReturn<FullFormSchemaType> }) => {
 
   return (
     <aside className="p-5 pl-9">
-      <h1 className="text-2xl text-blue-400 font-bold">Pick add-ons</h1>
-      <p className="text-gray-500 pb-10">
+      <h1 className="heading">Pick add-ons</h1>
+      <p className="sub-heading">
         Add-ons help enhance your gaming experience
       </p>
       <Form {...form}>
@@ -59,8 +59,12 @@ const AddOns = ({ form }: { form: UseFormReturn<FullFormSchemaType> }) => {
             billingCycle={billingCycle}
           />
           {/* Desktop Button */}
-          <div className="hidden md:flex justify-between items-center">
-            <Button className="cursor-pointer" onClick={handleback}>
+          <div className="desktop-buttons pt-24">
+            <Button
+              className="back-button text-gray-400 bg-white"
+              variant={"secondary"}
+              onClick={handleback}
+            >
               Go Back
             </Button>
             <Button type="submit" className="cursor-pointer">
@@ -69,11 +73,15 @@ const AddOns = ({ form }: { form: UseFormReturn<FullFormSchemaType> }) => {
           </div>
 
           {/* Mobile Fixed Button */}
-          <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white p-4 shadow-md flex justify-between items-center">
-            <Button className="" onClick={handleback}>
+          <div className="mobile-buttons">
+            <Button
+              className="back-button bg-white"
+              variant={"outline"}
+              onClick={handleback}
+            >
               Go Back
             </Button>{" "}
-            <Button type="submit" className="">
+            <Button type="submit" className="cursor-pointer">
               Next Step
             </Button>
           </div>

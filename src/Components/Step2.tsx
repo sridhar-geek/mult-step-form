@@ -1,7 +1,7 @@
 "use client";
 
 import { useMultiFormContext } from "@/React Context/formContext";
-import {  useStepContext } from "@/React Context/stepContext";
+import { useStepContext } from "@/React Context/stepContext";
 import { Button } from "./ui/button";
 import FormFeild from "./FormFeild";
 import { Form } from "./ui/form";
@@ -12,7 +12,7 @@ import { plans } from "@/lib/data";
 import { FullFormSchemaType } from "@/lib/formSchema";
 
 const Plans = ({ form }: { form: UseFormReturn<FullFormSchemaType> }) => {
-  const { step, setStep, setIsComplete } = useStepContext()
+  const { step, setStep, setIsComplete } = useStepContext();
   const { updateBillingCycle, updatePlan, billingCycle } =
     useMultiFormContext();
 
@@ -43,6 +43,10 @@ const Plans = ({ form }: { form: UseFormReturn<FullFormSchemaType> }) => {
 
   return (
     <aside className="p-5 pl-9">
+      <h1 className="heading">Select your Plan</h1>
+      <p className="sub-heading">
+        You have the option of select Monthly or Yearly billing
+      </p>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FormFeild
@@ -54,7 +58,7 @@ const Plans = ({ form }: { form: UseFormReturn<FullFormSchemaType> }) => {
           />
 
           <div className="flex justify-center mt-7 items-center space-x-6">
-            <Label>Monthly</Label>
+            <Label className="text-xl">Monthly</Label>
             <Switch
               className="cursor-pointer"
               checked={billingCycle === "yearly"} // Reflects current state
@@ -62,12 +66,16 @@ const Plans = ({ form }: { form: UseFormReturn<FullFormSchemaType> }) => {
                 updateBillingCycle(checked ? "yearly" : "monthly");
               }}
             />
-            <Label>Yearly</Label>
+            <Label className="text-xl">Yearly</Label>
           </div>
 
           {/* Desktop Button */}
-          <div className="hidden md:flex justify-between items-center">
-            <Button className="cursor-pointer" onClick={handleback}>
+          <div className="desktop-buttons pt-24">
+            <Button
+              className="back-button bg-white"
+              variant={"secondary"}
+              onClick={handleback}
+            >
               Go Back
             </Button>
             <Button type="submit" className="cursor-pointer">
@@ -76,11 +84,15 @@ const Plans = ({ form }: { form: UseFormReturn<FullFormSchemaType> }) => {
           </div>
 
           {/* Mobile Fixed Button */}
-          <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white p-4 shadow-md flex justify-between items-center">
-            <Button className="" onClick={handleback}>
+          <div className="mobile-buttons">
+            <Button
+              className="back-button bg-white"
+              variant={"secondary"}
+              onClick={handleback}
+            >
               Go Back
             </Button>{" "}
-            <Button type="submit" className="">
+            <Button type="submit" className="cursor-pointer">
               Next Step
             </Button>
           </div>

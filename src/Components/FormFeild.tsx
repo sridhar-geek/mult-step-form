@@ -59,7 +59,7 @@ const RenderInput = <T extends FieldValues>({
                   key={option.id}
                   className={`w-full flex flex-row items-center justify-between p-4 rounded-lg border text-left transition-all duration-200 ${
                     isChecked
-                      ? "border-blue-600 ring-2 ring-blue-500 bg-blue-50"
+                      ? "border-active ring-2 ring-active bg-blue-50"
                       : "border-muted hover:border-blue-400"
                   }`}
                 >
@@ -69,12 +69,14 @@ const RenderInput = <T extends FieldValues>({
                     className="cursor-pointer w-6 h-6"
                   />
                   <div className="ml-4 flex-1">
-                    <div className="font-medium">{option.name}</div>
+                    <div className="font-medium text-xl mb-2">
+                      {option.name}
+                    </div>
                     <div className="text-sm text-muted-foreground">
                       {option.description}
                     </div>
                   </div>
-                  <div className="text-sm font-medium text-blue-600">
+                  <div className="text-xl font-medium text-active">
                     $
                     {props.billingCycle === "monthly"
                       ? option.monthlyPrice
@@ -94,7 +96,7 @@ const RenderInput = <T extends FieldValues>({
           <RadioGroup
             onValueChange={field.onChange}
             defaultValue={field.value}
-            className="flex flex-col gap-4"
+            className="flex flex-col gap-4 md:flex-row"
           >
             {props.options &&
               props.options.map((option) => {
@@ -103,21 +105,21 @@ const RenderInput = <T extends FieldValues>({
                   <Card
                     key={option.value}
                     onClick={() => field.onChange(option.value)}
-                    className={`w-full p-4 rounded-lg border text-left transition-all duration-200 cursor-pointer
+                    className={`w-full p-4 rounded-lg border text-left transition-all duration-200 cursor-pointer md:min-h-52
                       ${
                         isSelected
-                          ? "border-blue-600 ring-2 ring-blue-500 bg-blue-50"
+                          ? "border-active ring-2 ring-active bg-blue-50"
                           : "border-muted hover:border-blue-400"
                       }`}
                   >
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 md:flex-col">
                       <Image
                         src={option.icon}
                         alt={option.label}
-                        width={40}
-                        height={40}
+                        width={50}
+                        height={50}
                       />
-                      <div>
+                      <div className="md:pt-6">
                         <div className="font-medium">{option.label}</div>
                         <div className="text-sm text-muted-foreground">
                           $
@@ -148,6 +150,7 @@ const RenderInput = <T extends FieldValues>({
             type={props.type}
             onChange={(e) => field.onChange(e.target.value)}
             value={field.value ?? ""}
+            className="p-7 text-xl md:text-2xl appearance-none"
           />
         </FormControl>
       );
@@ -162,7 +165,7 @@ const FormFeild = <T extends FieldValues>(props: CustomProps<T>) => {
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel className="flex justify-between items-center">
+          <FormLabel className="flex justify-between items-center text-xl">
             {label}
             <FormMessage />
           </FormLabel>

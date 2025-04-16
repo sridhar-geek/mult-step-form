@@ -1,5 +1,6 @@
 import { UseFormReturn } from "react-hook-form";
 import { Form } from "@/Components/ui/form";
+// local imports
 import FormFeild from "./FormFeild";
 import { Button } from "./ui/button";
 import { useStepContext } from "@/React Context/stepContext";
@@ -11,7 +12,7 @@ const inputFormFeilds = [
     name: "name",
     label: "Name",
     type: "text",
-    placeholder: "Sridhar",
+    placeholder: "Your Name",
   },
   {
     name: "email",
@@ -47,12 +48,12 @@ const Info = ({ form }: { form: UseFormReturn<FullFormSchemaType> }) => {
 
   return (
     <aside className="p-5 pl-9">
-      <h1 className="text-2xl text-blue-400 font-bold">Personal Info</h1>
-      <p className="text-gray-500 pb-10">
+      <h1 className="heading">Personal Info</h1>
+      <p className="sub-heading">
         Please provide your name, email address and phone number
       </p>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 ">
           {inputFormFeilds.map((inputFeild) => (
             <FormFeild
               key={inputFeild.label}
@@ -64,17 +65,17 @@ const Info = ({ form }: { form: UseFormReturn<FullFormSchemaType> }) => {
             />
           ))}
           {/* Desktop Button */}
-          <div className="hidden md:flex justify-end items-end">
+          <div className="desktop-buttons">
             <div></div>
-            <Button type="submit" className="cursor-pointer">
+            <Button type="submit" className="cursor-pointer h-10">
               Next Step
             </Button>
           </div>
 
           {/* Mobile Fixed Button */}
-          <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white p-4 shadow-md flex justify-between items-center">
+          <div className="mobile-buttons">
             <div></div>
-            <Button type="submit" className="">
+            <Button type="submit" className="cursor-pointer">
               Next Step
             </Button>
           </div>

@@ -10,8 +10,8 @@ const ThankYou = () => {
         width={100}
         height={100}
       />
-      <h1>Thank your!</h1>
-      <p>
+      <h1 className="heading">Thank you!</h1>
+      <p className="sub-heading ">
         Thanks for confirming your subscription! We hope you have fun using our
         platform. If you ever need support, please feel free to email us at
         support@loremgaming.com
